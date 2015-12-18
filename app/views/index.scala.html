@@ -1,0 +1,20 @@
+@(message: String,list:List[Member])
+
+@main("Welcome to Play") {
+
+    <h2>Create Member</h2>
+   <form method="post" action="@routes.Application.create()">
+       <input name="name" type="text"/>
+       <input type="submit"/>
+   </form>
+
+    @if(list.size()>0) {
+        <h2>Member List</h2>
+        <ol>
+        @for(l <- list) {
+            <li>@l.getName() &nbsp;<a href="@routes.Application.delete(l.getId)">Delete</a></li>
+        }
+        </ol>
+    }
+
+}
